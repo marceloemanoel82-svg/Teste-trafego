@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Consórcio de Curto Prazo | Sem Juros | Regulamentado</title>
+
+<meta name="description" content="Consórcio de curto prazo sem juros, regulamentado pelo Banco Central. Planejamento financeiro com segurança, transparência e parcelas acessíveis.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#0f766e;
+  --secondary:#14b8a6;
+  --dark:#0f172a;
+  --light:#f8fafc;
+  --accent:#22c55e;
+  --gray:#64748b;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  background:var(--light);
+  color:var(--dark);
+}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg, var(--primary), var(--secondary));
+  color:#fff;
+  padding:100px 20px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:2.7rem;
+  margin-bottom:15px;
+}
+
+.hero p{
+  max-width:800px;
+  margin:0 auto 30px;
+  font-size:1.1rem;
+}
+
+.btn{
+  display:inline-block;
+  background:var(--accent);
+  color:#064e3b;
+  padding:16px 36px;
+  border-radius:50px;
+  font-weight:600;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+/* SECTION */
+section{
+  max-width:1150px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:55px;
+}
+
+.section-title h2{
+  font-size:2.1rem;
+}
+
+.section-title p{
+  color:var(--gray);
+  margin-top:10px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:30px;
+}
+
+.card{
+  background:#fff;
+  padding:32px;
+  border-radius:22px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card h3{
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+/* INFO BOX */
+.info-box{
+  background:#ecfeff;
+  border-left:6px solid var(--primary);
+  padding:30px;
+  border-radius:18px;
+  font-size:0.98rem;
+}
+
+/* FORM */
+.form-box{
+  background:#fff;
+  border-radius:30px;
+  padding:45px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.15);
+}
+
+.form-box h2{
+  text-align:center;
+  margin-bottom:30px;
+  color:var(--primary);
+}
+
+label{
+  font-size:0.9rem;
+  font-weight:500;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  margin:8px 0 20px;
+  border-radius:14px;
+  border:1px solid #cbd5f5;
+}
+
+button{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(135deg, var(--primary), var(--secondary));
+  color:#fff;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 35px rgba(0,0,0,0.25);
+}
+
+/* FAQ */
+.faq-item{
+  background:#fff;
+  border-radius:18px;
+  margin-bottom:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+}
+
+.faq-question{
+  padding:20px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.faq-answer{
+  padding:0 20px 20px;
+  display:none;
+  font-size:0.95rem;
+  color:var(--gray);
+}
+
+/* FOOTER */
+footer{
+  background:var(--dark);
+  color:#cbd5f5;
+  padding:45px 20px;
+  text-align:center;
+  font-size:0.85rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Consórcio de Curto Prazo</h1>
+  <p>Uma forma inteligente de conquistar seu bem, sem juros, com planejamento financeiro e total respaldo legal.</p>
+  <a href="#form" class="btn">Simular Agora</a>
+</div>
+
+<!-- COMO FUNCIONA -->
+<section>
+  <div class="section-title">
+    <h2>Como Funciona o Consórcio</h2>
+    <p>Transparência total, sem promessas irreais</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Compra Planejada</h3>
+      <p>Você participa de um grupo e contribui mensalmente para um fundo comum.</p>
+    </div>
+
+    <div class="card">
+      <h3>Formas de Contemplação</h3>
+      <p>A contemplação ocorre por sorteio ou lance, conforme regras do grupo.</p>
+    </div>
+
+    <div class="card">
+      <h3>Sem Juros</h3>
+      <p>Não há juros. Apenas taxa administrativa e fundo de reserva quando previsto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA CONTEMPLAÇÃO -->
+<section>
+  <div class="section-title">
+    <h2>Média de Contemplação</h2>
+  </div>
+
+  <div class="info-box">
+    <p>
+      Na modalidade de consórcio de curto prazo, a contemplação costuma ocorrer, em média, entre
+      <strong>6 e 18 meses</strong>, considerando estratégias de lance e participação regular nos sorteios.
+      <br><br>
+      ⚠️ Importante: não existe garantia de contemplação em prazo específico. O consórcio é uma modalidade
+      de compra planejada, regulamentada pela Lei nº 11.795/2008.
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="section-title">
+    <h2>Dúvidas Mais Frequentes</h2>
+  </div>
+
+  <div class="faq-item"><div class="faq-question">1. Consórcio é seguro?</div><div class="faq-answer">Sim. É regulamentado e fiscalizado pelo Banco Central do Brasil.</div></div>
+  <div class="faq-item"><div class="faq-question">2. Tem juros?</div><div class="faq-answer">Não. Existe apenas taxa administrativa e fundos previstos em contrato.</div></div>
+  <div class="faq-item"><div class="faq-question">3. Existe entrada?</div><div class="faq-answer">Alguns planos possuem entrada no ato da assinatura, sempre informada previamente.</div></div>
+  <div class="faq-item"><div class="faq-question">4. Posso antecipar parcelas?</div><div class="faq-answer">Sim, conforme regras do grupo.</div></div>
+  <div class="faq-item"><div class="faq-question">5. Posso dar lance?</div><div class="faq-answer">Sim. O lance é uma das formas de contemplação.</div></div>
+  <div class="faq-item"><div class="faq-question">6. Score baixo impede consórcio?</div><div class="faq-answer">Não necessariamente. A análise ocorre no momento da contemplação.</div></div>
+  <div class="faq-item"><div class="faq-question">7. Posso escolher o bem?</div><div class="faq-answer">O crédito é utilizado conforme o bem contratado.</div></div>
+  <div class="faq-item"><div class="faq-question">8. Quem administra o consórcio?</div><div class="faq-answer">A Administradora Alpha, conforme normas do Banco Central.</div></div>
+  <div class="faq-item"><div class="faq-question">9. Posso usar o FGTS?</div><div class="faq-answer">Apenas em consórcios imobiliários, conforme regras legais.</div></div>
+  <div class="faq-item"><div class="faq-question">10. Tem garantia de contemplação?</div><div class="faq-answer">Não. A contemplação depende de sorteio ou lance.</div></div>
+</section>
+
+<!-- FORM -->
+<section id="form">
+  <div class="form-box">
+    <h2>Simule Sem Compromisso</h2>
+
+    <form onsubmit="enviarWhatsApp(event)">
+      <label>Bem desejado</label>
+      <input id="bem" required>
+
+      <label>Valor do bem</label>
+      <input id="valor" type="number" required>
+
+      <label>Valor de entrada</label>
+      <input id="entrada" type="number">
+
+      <label>Quanto pode pagar por parcela?</label>
+      <input id="parcela" type="number" required>
+
+      <label>Nome</label>
+      <input id="nome" required>
+
+      <label>Email</label>
+      <input id="email" type="email" required>
+
+      <label>Telefone (WhatsApp)</label>
+      <input id="telefone" required>
+
+      <button>Enviar para WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>
+    Conteúdo informativo. Consórcio regulamentado pela Lei nº 11.795/2008.
+    Não garantimos contemplação imediata ou em prazo específico.
+  </p>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(q=>{
+  q.addEventListener('click', ()=>{
+    const a = q.nextElementSibling;
+    a.style.display = a.style.display === 'block' ? 'none' : 'block';
+  });
+});
+
+function enviarWhatsApp(e){
+  e.preventDefault();
+  const msg =
+`Olá, tenho interesse em consórcio de curto prazo.
+
+Nome: ${nome.value}
+Telefone: ${telefone.value}
+Email: ${email.value}
+Bem desejado: ${bem.value}
+Valor do bem: R$ ${valor.value}
+Entrada: R$ ${entrada.value}
+Parcela possível: R$ ${parcela.value}`;
+
+  window.open(
+    `https://wa.me/5561996463677?text=${encodeURIComponent(msg)}`,
+    '_blank'
+  );
+}
+</script>
+
+</body>
+  </html>
