@@ -3,336 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Consórcio de Curto Prazo | Sem Juros | Regulamentado</title>
-
-<meta name="description" content="Consórcio de curto prazo sem juros, regulamentado pelo Banco Central. Planejamento financeiro com segurança, transparência e parcelas acessíveis.">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Crédito Veicular e Imobiliário | Mesmo com Restrição</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --primary:#0f766e;
   --secondary:#14b8a6;
-  --dark:#0f172a;
-  --light:#f8fafc;
   --accent:#22c55e;
-  --gray:#64748b;
+  --dark:#020617;
+  --gray:#475569;
+  --light:#f8fafc;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins', sans-serif;
-}
-
-body{
-  background:var(--light);
-  color:var(--dark);
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:var(--light);color:var(--dark);line-height:1.65;}
+section{max-width:1200px;margin:auto;padding:90px 20px;}
 
 /* HERO */
 .hero{
-  background:linear-gradient(135deg, var(--primary), var(--secondary));
-  color:#fff;
-  padding:100px 20px;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-align:center;
+  padding:60px 20px;
+  background:
+    linear-gradient(135deg,rgba(15,118,110,.96),rgba(20,184,166,.96)),
+    url('https://images.unsplash.com/photo-1554224155-6726b3ff858f') center/cover;
+  color:#fff;
 }
-
-.hero h1{
-  font-size:2.7rem;
-  margin-bottom:15px;
-}
-
-.hero p{
-  max-width:800px;
-  margin:0 auto 30px;
-  font-size:1.1rem;
-}
+.hero h1{font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:800;margin-bottom:25px;}
+.hero p{max-width:920px;margin:auto;margin-bottom:45px;font-size:1.15rem;}
 
 .btn{
-  display:inline-block;
   background:var(--accent);
   color:#064e3b;
-  padding:16px 36px;
-  border-radius:50px;
-  font-weight:600;
+  padding:20px 55px;
+  border-radius:60px;
+  font-weight:800;
   text-decoration:none;
-  transition:0.3s;
+  transition:.3s;
+  display:inline-block;
 }
-
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.25);
-}
-
-/* SECTION */
-section{
-  max-width:1150px;
-  margin:auto;
-  padding:80px 20px;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:55px;
-}
-
-.section-title h2{
-  font-size:2.1rem;
-}
-
-.section-title p{
-  color:var(--gray);
-  margin-top:10px;
-}
+.btn:hover{transform:scale(1.06);}
 
 /* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-  gap:30px;
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
+.card{background:#fff;padding:38px;border-radius:28px;box-shadow:0 20px 55px rgba(0,0,0,.08);transition:.4s;}
+.card:hover{transform:translateY(-8px);}
 
-.card{
-  background:#fff;
-  padding:32px;
-  border-radius:22px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.08);
-  transition:0.3s;
-}
+h2{text-align:center;font-size:clamp(2rem,3.2vw,2.7rem);font-weight:800;margin-bottom:55px;}
 
-.card:hover{
-  transform:translateY(-10px);
-}
+/* HIGHLIGHT */
+.highlight{background:linear-gradient(135deg,#ecfeff,#f0fdfa);border-left:6px solid var(--primary);padding:45px;border-radius:25px;max-width:950px;margin:auto;}
 
-.card h3{
-  color:var(--primary);
-  margin-bottom:10px;
-}
-
-/* INFO BOX */
-.info-box{
-  background:#ecfeff;
-  border-left:6px solid var(--primary);
-  padding:30px;
-  border-radius:18px;
-  font-size:0.98rem;
-}
-
-/* FORM */
-.form-box{
-  background:#fff;
-  border-radius:30px;
-  padding:45px;
-  box-shadow:0 25px 60px rgba(0,0,0,0.15);
-}
-
-.form-box h2{
-  text-align:center;
-  margin-bottom:30px;
-  color:var(--primary);
-}
-
-label{
-  font-size:0.9rem;
-  font-weight:500;
-}
-
-input{
-  width:100%;
-  padding:15px;
-  margin:8px 0 20px;
-  border-radius:14px;
-  border:1px solid #cbd5f5;
-}
-
-button{
-  width:100%;
-  padding:18px;
-  border:none;
-  border-radius:50px;
-  background:linear-gradient(135deg, var(--primary), var(--secondary));
-  color:#fff;
-  font-size:1rem;
-  font-weight:600;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-button:hover{
-  transform:translateY(-2px);
-  box-shadow:0 18px 35px rgba(0,0,0,0.25);
-}
+/* TIMELINE */
+.timeline{max-width:900px;margin:auto;}
+.step{background:#fff;padding:35px 35px 35px 55px;border-radius:22px;margin-bottom:22px;box-shadow:0 15px 40px rgba(0,0,0,.08);position:relative;opacity:0;transform:translateY(30px);transition:.6s;}
+.step.active{opacity:1;transform:translateY(0);}
+.step::before{content:"";position:absolute;left:25px;top:20px;bottom:20px;width:4px;background:var(--primary);border-radius:10px;}
 
 /* FAQ */
-.faq-item{
-  background:#fff;
-  border-radius:18px;
-  margin-bottom:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.06);
-}
+.faq{background:#fff;padding:30px;border-radius:22px;margin-bottom:18px;box-shadow:0 12px 35px rgba(0,0,0,.08);cursor:pointer;}
+.faq p{max-height:0;overflow:hidden;transition:.4s;color:var(--gray);}
+.faq.active p{max-height:260px;margin-top:12px;}
 
-.faq-question{
-  padding:20px;
-  cursor:pointer;
-  font-weight:600;
-}
+/* FORM */
+.form{background:#fff;padding:50px;border-radius:38px;max-width:760px;margin:auto;box-shadow:0 35px 85px rgba(0,0,0,.16);}
+label{font-weight:600;font-size:.9rem;}
+input,select{width:100%;padding:16px;margin:10px 0 22px;border-radius:14px;border:1px solid #cbd5e1;}
+button{width:100%;padding:20px;border:none;border-radius:60px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-weight:800;font-size:1rem;cursor:pointer;}
 
-.faq-answer{
-  padding:0 20px 20px;
-  display:none;
-  font-size:0.95rem;
-  color:var(--gray);
-}
+footer{background:var(--dark);color:#cbd5f5;text-align:center;padding:50px 20px;font-size:.85rem;}
 
-/* FOOTER */
-footer{
-  background:var(--dark);
-  color:#cbd5f5;
-  padding:45px 20px;
-  text-align:center;
-  font-size:0.85rem;
-}
+@media(max-width:600px){.form{padding:32px;}}
 </style>
 </head>
-
 <body>
 
-<!-- HERO -->
 <div class="hero">
-  <h1>Consórcio de Curto Prazo</h1>
-  <p>Uma forma inteligente de conquistar seu bem, sem juros, com planejamento financeiro e total respaldo legal.</p>
-  <a href="#form" class="btn">Simular Agora</a>
+  <div>
+    <h1>Já tentou financiar e ouviu um não por causa do score?</h1>
+    <p>Ter restrição ou score baixo não significa desistir do seu carro ou imóvel. Existe um caminho legal, organizado e acompanhado pelo Banco Central para quem quer conquistar com planejamento — não com promessas.</p>
+    <a href="#form" class="btn">Quero saber se eu me encaixo</a>
+  </div>
 </div>
 
-<!-- COMO FUNCIONA -->
 <section>
-  <div class="section-title">
-    <h2>Como Funciona o Consórcio</h2>
-    <p>Transparência total, sem promessas irreais</p>
+  <h2>Por que o banco bloqueia quem tem restrição?</h2>
+  <div class="highlight">
+    <p>Bancos tradicionais só liberam crédito para perfis considerados perfeitos. Um atraso antigo, uma dívida pequena ou score baixo já eliminam qualquer chance.</p><br>
+    <p>No consórcio, o processo é diferente: você entra em um grupo, se organiza financeiramente e se prepara para o momento certo da liberação do crédito.</p>
   </div>
+</section>
 
+<section>
+  <h2>Por que essa é a saída mais inteligente?</h2>
   <div class="grid">
-    <div class="card">
-      <h3>Compra Planejada</h3>
-      <p>Você participa de um grupo e contribui mensalmente para um fundo comum.</p>
-    </div>
-
-    <div class="card">
-      <h3>Formas de Contemplação</h3>
-      <p>A contemplação ocorre por sorteio ou lance, conforme regras do grupo.</p>
-    </div>
-
-    <div class="card">
-      <h3>Sem Juros</h3>
-      <p>Não há juros. Apenas taxa administrativa e fundo de reserva quando previsto.</p>
-    </div>
+    <div class="card"><strong>✔ Sem aprovação imediata</strong><p>Seu CPF não é analisado na entrada, apenas no momento da contemplação.</p></div>
+    <div class="card"><strong>✔ Sem juros abusivos</strong><p>Você paga apenas a taxa administrativa prevista em contrato.</p></div>
+    <div class="card"><strong>✔ Planejamento real</strong><p>Você sabe exatamente como funciona antes de assinar qualquer coisa.</p></div>
   </div>
 </section>
 
-<!-- MEDIA CONTEMPLAÇÃO -->
 <section>
-  <div class="section-title">
-    <h2>Média de Contemplação</h2>
-  </div>
-
-  <div class="info-box">
-    <p>
-      Na modalidade de consórcio de curto prazo, a contemplação costuma ocorrer, em média, entre
-      <strong>6 e 18 meses</strong>, considerando estratégias de lance e participação regular nos sorteios.
-      <br><br>
-      ⚠️ Importante: não existe garantia de contemplação em prazo específico. O consórcio é uma modalidade
-      de compra planejada, regulamentada pela Lei nº 11.795/2008.
-    </p>
+  <h2>Passo a passo do processo</h2>
+  <div class="timeline">
+    <div class="step">1️⃣ Envio do formulário com seus dados e objetivo</div>
+    <div class="step">2️⃣ Agendamento para explicação completa e sem compromisso</div>
+    <div class="step">3️⃣ Entrada no crédito (adesão ao consórcio)</div>
+    <div class="step">4️⃣ Estudo e acompanhamento do grupo ideal</div>
+    <div class="step">5️⃣ Contemplação conforme estratégia e regras do grupo</div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section>
-  <div class="section-title">
-    <h2>Dúvidas Mais Frequentes</h2>
-  </div>
-
-  <div class="faq-item"><div class="faq-question">1. Consórcio é seguro?</div><div class="faq-answer">Sim. É regulamentado e fiscalizado pelo Banco Central do Brasil.</div></div>
-  <div class="faq-item"><div class="faq-question">2. Tem juros?</div><div class="faq-answer">Não. Existe apenas taxa administrativa e fundos previstos em contrato.</div></div>
-  <div class="faq-item"><div class="faq-question">3. Existe entrada?</div><div class="faq-answer">Alguns planos possuem entrada no ato da assinatura, sempre informada previamente.</div></div>
-  <div class="faq-item"><div class="faq-question">4. Posso antecipar parcelas?</div><div class="faq-answer">Sim, conforme regras do grupo.</div></div>
-  <div class="faq-item"><div class="faq-question">5. Posso dar lance?</div><div class="faq-answer">Sim. O lance é uma das formas de contemplação.</div></div>
-  <div class="faq-item"><div class="faq-question">6. Score baixo impede consórcio?</div><div class="faq-answer">Não necessariamente. A análise ocorre no momento da contemplação.</div></div>
-  <div class="faq-item"><div class="faq-question">7. Posso escolher o bem?</div><div class="faq-answer">O crédito é utilizado conforme o bem contratado.</div></div>
-  <div class="faq-item"><div class="faq-question">8. Quem administra o consórcio?</div><div class="faq-answer">A Administradora Alpha, conforme normas do Banco Central.</div></div>
-  <div class="faq-item"><div class="faq-question">9. Posso usar o FGTS?</div><div class="faq-answer">Apenas em consórcios imobiliários, conforme regras legais.</div></div>
-  <div class="faq-item"><div class="faq-question">10. Tem garantia de contemplação?</div><div class="faq-answer">Não. A contemplação depende de sorteio ou lance.</div></div>
+  <h2>Dúvidas mais comuns</h2>
+  <div class="faq"><strong>Posso entrar mesmo com nome negativado?</strong><p>Sim. A análise de CPF acontece apenas no momento da contemplação.</p></div>
+  <div class="faq"><strong>O que é a taxa de adesão?</strong><p>É o valor inicial para ingresso no grupo, previsto em contrato.</p></div>
+  <div class="faq"><strong>O que é o grupo de consórcio?</strong><p>É um conjunto de pessoas com o mesmo objetivo, administrado conforme a Lei 11.795/2008.</p></div>
+  <div class="faq"><strong>Como funciona a contemplação?</strong><p>Acontece por sorteio ou lance, seguindo regras claras do grupo.</p></div>
+  <div class="faq"><strong>Existe garantia de prazo?</strong><p>Não. Trabalhamos com médias e estratégias, nunca promessas.</p></div>
+  <div class="faq"><strong>Preciso dar entrada?</strong><p>Não é obrigatório, mas valores disponíveis ajudam na estratégia.</p></div>
+  <div class="faq"><strong>Quem administra o crédito?</strong><p>A Alpha Investimentos, com fiscalização do Banco Central.</p></div>
+  <div class="faq"><strong>É seguro?</strong><p>Sim. Processo legal e regulamentado.</p></div>
 </section>
 
-<!-- FORM -->
 <section id="form">
-  <div class="form-box">
-    <h2>Simule Sem Compromisso</h2>
-
-    <form onsubmit="enviarWhatsApp(event)">
-      <label>Bem desejado</label>
-      <input id="bem" required>
-
-      <label>Valor do bem</label>
-      <input id="valor" type="number" required>
-
-      <label>Valor de entrada</label>
-      <input id="entrada" type="number">
-
-      <label>Quanto pode pagar por parcela?</label>
-      <input id="parcela" type="number" required>
-
-      <label>Nome</label>
-      <input id="nome" required>
-
-      <label>Email</label>
-      <input id="email" type="email" required>
-
-      <label>Telefone (WhatsApp)</label>
-      <input id="telefone" required>
-
-      <button>Enviar para WhatsApp</button>
+  <div class="form">
+    <h2>Solicitar análise personalizada</h2>
+    <form onsubmit="event.preventDefault();window.open('https://wa.me/5561996463677','_blank');">
+      <label>Nome completo</label><input required>
+      <label>WhatsApp</label><input required>
+      <label>O que você deseja adquirir?</label><select><option>Carro</option><option>Imóvel</option></select>
+      <label>Valor aproximado do bem</label><input>
+      <label>Valor disponível para investir (entrada ou lance)</label><input>
+      <label>Quanto pode pagar por mês?</label><input>
+      <label>Como está seu CPF hoje?</label><select><option>Nome limpo</option><option>Restrição leve</option><option>Nome negativado</option></select>
+      <button>Enviar e agendar conversa</button>
     </form>
   </div>
 </section>
 
 <footer>
-  <p>
-    Conteúdo informativo. Consórcio regulamentado pela Lei nº 11.795/2008.
-    Não garantimos contemplação imediata ou em prazo específico.
-  </p>
+  Crédito estruturado via consórcio • Alpha Investimentos<br>Fiscalização e acompanhamento do Banco Central do Brasil
 </footer>
 
 <script>
-document.querySelectorAll('.faq-question').forEach(q=>{
-  q.addEventListener('click', ()=>{
-    const a = q.nextElementSibling;
-    a.style.display = a.style.display === 'block' ? 'none' : 'block';
-  });
-});
+const steps=document.querySelectorAll('.step');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active');});},{threshold:.2});
+steps.forEach(s=>obs.observe(s));
 
-function enviarWhatsApp(e){
-  e.preventDefault();
-  const msg =
-`Olá, tenho interesse em consórcio de curto prazo.
-
-Nome: ${nome.value}
-Telefone: ${telefone.value}
-Email: ${email.value}
-Bem desejado: ${bem.value}
-Valor do bem: R$ ${valor.value}
-Entrada: R$ ${entrada.value}
-Parcela possível: R$ ${parcela.value}`;
-
-  window.open(
-    `https://wa.me/5561996463677?text=${encodeURIComponent(msg)}`,
-    '_blank'
-  );
-}
+document.querySelectorAll('.faq').forEach(f=>{f.addEventListener('click',()=>f.classList.toggle('active'));});
 </script>
 
 </body>
-  </html>
+</html>
