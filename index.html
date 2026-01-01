@@ -3,161 +3,244 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crédito Veicular e Imobiliário | Mesmo com Restrição</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Simulador de Consórcio Inteligente</title>
 
 <style>
-:root{
-  --primary:#0f766e;
-  --secondary:#14b8a6;
-  --accent:#22c55e;
-  --dark:#020617;
-  --gray:#475569;
-  --light:#f8fafc;
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(180deg,#020617,#0f172a);
+  color:#f8fafc;
 }
-
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-html{scroll-behavior:smooth;}
-body{background:var(--light);color:var(--dark);line-height:1.65;}
-section{max-width:1200px;margin:auto;padding:90px 20px;}
-
-/* HERO */
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.container{
+  max-width:480px;
+  margin:auto;
+  padding:20px;
+}
+h1{
   text-align:center;
-  padding:60px 20px;
-  background:
-    linear-gradient(135deg,rgba(15,118,110,.96),rgba(20,184,166,.96)),
-    url('https://images.unsplash.com/photo-1554224155-6726b3ff858f') center/cover;
-  color:#fff;
+  font-size:22px;
+  margin-bottom:20px;
 }
-.hero h1{font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:800;margin-bottom:25px;}
-.hero p{max-width:920px;margin:auto;margin-bottom:45px;font-size:1.15rem;}
-
-.btn{
-  background:var(--accent);
-  color:#064e3b;
-  padding:20px 55px;
-  border-radius:60px;
-  font-weight:800;
-  text-decoration:none;
-  transition:.3s;
-  display:inline-block;
+.card{
+  background:#020617;
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:18px;
+  box-shadow:0 0 20px rgba(0,0,0,.4);
 }
-.btn:hover{transform:scale(1.06);}
-
-/* GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
-.card{background:#fff;padding:38px;border-radius:28px;box-shadow:0 20px 55px rgba(0,0,0,.08);transition:.4s;}
-.card:hover{transform:translateY(-8px);}
-
-h2{text-align:center;font-size:clamp(2rem,3.2vw,2.7rem);font-weight:800;margin-bottom:55px;}
-
-/* HIGHLIGHT */
-.highlight{background:linear-gradient(135deg,#ecfeff,#f0fdfa);border-left:6px solid var(--primary);padding:45px;border-radius:25px;max-width:950px;margin:auto;}
-
-/* TIMELINE */
-.timeline{max-width:900px;margin:auto;}
-.step{background:#fff;padding:35px 35px 35px 55px;border-radius:22px;margin-bottom:22px;box-shadow:0 15px 40px rgba(0,0,0,.08);position:relative;opacity:0;transform:translateY(30px);transition:.6s;}
-.step.active{opacity:1;transform:translateY(0);}
-.step::before{content:"";position:absolute;left:25px;top:20px;bottom:20px;width:4px;background:var(--primary);border-radius:10px;}
-
-/* FAQ */
-.faq{background:#fff;padding:30px;border-radius:22px;margin-bottom:18px;box-shadow:0 12px 35px rgba(0,0,0,.08);cursor:pointer;}
-.faq p{max-height:0;overflow:hidden;transition:.4s;color:var(--gray);}
-.faq.active p{max-height:260px;margin-top:12px;}
-
-/* FORM */
-.form{background:#fff;padding:50px;border-radius:38px;max-width:760px;margin:auto;box-shadow:0 35px 85px rgba(0,0,0,.16);}
-label{font-weight:600;font-size:.9rem;}
-input,select{width:100%;padding:16px;margin:10px 0 22px;border-radius:14px;border:1px solid #cbd5e1;}
-button{width:100%;padding:20px;border:none;border-radius:60px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-weight:800;font-size:1rem;cursor:pointer;}
-
-footer{background:var(--dark);color:#cbd5f5;text-align:center;padding:50px 20px;font-size:.85rem;}
-
-@media(max-width:600px){.form{padding:32px;}}
+label{
+  font-size:13px;
+  color:#cbd5f5;
+}
+input,select{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  margin-bottom:14px;
+  border-radius:10px;
+  border:none;
+  font-size:15px;
+}
+button{
+  width:100%;
+  padding:15px;
+  background:#22c55e;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+button:hover{background:#16a34a;}
+.result{font-size:14px;line-height:1.6;}
+.highlight{color:#22c55e;font-weight:bold;}
+.faq summary{
+  cursor:pointer;
+  font-weight:bold;
+  color:#38bdf8;
+}
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:.6;
+  margin-top:20px;
+}
+.tip{
+  font-size:12px;
+  opacity:.7;
+  margin-bottom:10px;
+}
 </style>
 </head>
-<body>
 
-<div class="hero">
-  <div>
-    <h1>Já tentou financiar e ouviu um não por causa do score?</h1>
-    <p>Ter restrição ou score baixo não significa desistir do seu carro ou imóvel. Existe um caminho legal, organizado e acompanhado pelo Banco Central para quem quer conquistar com planejamento — não com promessas.</p>
-    <a href="#form" class="btn">Quero saber se eu me encaixo</a>
-  </div>
+<body>
+<div class="container">
+
+<h1>Simulador de Compra Planejada</h1>
+
+<div class="card">
+  <label>Valor do bem desejado</label>
+  <input id="bem" placeholder="Ex: 100.000">
+
+  <label>Valor disponível hoje</label>
+  <input id="disponivel" placeholder="Ex: 70.000">
+
+  <label>Valor da adesão</label>
+  <input id="adesao" placeholder="Ex: 30.000">
+
+  <label>Valor que ficará rendendo</label>
+  <input id="investido" placeholder="Ex: 40.000">
+
+  <label>Tipo de consórcio</label>
+  <select id="tipo">
+    <option value="0.19">Veículo (padrão)</option>
+    <option value="0.28">Imóvel</option>
+  </select>
+
+  <label>Prazo (meses)</label>
+  <input id="prazo" placeholder="Ex: 60">
+
+  <label>Parcela desejada</label>
+  <input id="parcela" placeholder="Ex: 1.400">
+
+  <p class="tip">
+  💡 Estratégia recomendada: adesão mínima de <strong>20%</strong> do valor do bem,
+  garantindo pelo menos <strong>50% para lance embutido</strong>.
+  </p>
+
+  <button onclick="calcular()">Simular agora</button>
 </div>
 
-<section>
-  <h2>Por que o banco bloqueia quem tem restrição?</h2>
-  <div class="highlight">
-    <p>Bancos tradicionais só liberam crédito para perfis considerados perfeitos. Um atraso antigo, uma dívida pequena ou score baixo já eliminam qualquer chance.</p><br>
-    <p>No consórcio, o processo é diferente: você entra em um grupo, se organiza financeiramente e se prepara para o momento certo da liberação do crédito.</p>
-  </div>
-</section>
+<div class="card result" id="resultado"></div>
 
-<section>
-  <h2>Por que essa é a saída mais inteligente?</h2>
-  <div class="grid">
-    <div class="card"><strong>✔ Sem aprovação imediata</strong><p>Seu CPF não é analisado na entrada, apenas no momento da contemplação.</p></div>
-    <div class="card"><strong>✔ Sem juros abusivos</strong><p>Você paga apenas a taxa administrativa prevista em contrato.</p></div>
-    <div class="card"><strong>✔ Planejamento real</strong><p>Você sabe exatamente como funciona antes de assinar qualquer coisa.</p></div>
-  </div>
-</section>
+<div class="card faq">
+<h3>❓ Dúvidas Frequentes</h3>
 
-<section>
-  <h2>Passo a passo do processo</h2>
-  <div class="timeline">
-    <div class="step">1️⃣ Envio do formulário com seus dados e objetivo</div>
-    <div class="step">2️⃣ Agendamento para explicação completa e sem compromisso</div>
-    <div class="step">3️⃣ Entrada no crédito (adesão ao consórcio)</div>
-    <div class="step">4️⃣ Estudo e acompanhamento do grupo ideal</div>
-    <div class="step">5️⃣ Contemplação conforme estratégia e regras do grupo</div>
-  </div>
-</section>
+<details>
+<summary>Por que a adesão ideal é no mínimo 20%?</summary>
+Uma adesão de pelo menos 20% estrutura melhor a carta e garante
+<strong>no mínimo 50% disponíveis para lance embutido</strong>, aumentando
+significativamente as chances de contemplação.
+</details>
 
-<section>
-  <h2>Dúvidas mais comuns</h2>
-  <div class="faq"><strong>Posso entrar mesmo com nome negativado?</strong><p>Sim. A análise de CPF acontece apenas no momento da contemplação.</p></div>
-  <div class="faq"><strong>O que é a taxa de adesão?</strong><p>É o valor inicial para ingresso no grupo, previsto em contrato.</p></div>
-  <div class="faq"><strong>O que é o grupo de consórcio?</strong><p>É um conjunto de pessoas com o mesmo objetivo, administrado conforme a Lei 11.795/2008.</p></div>
-  <div class="faq"><strong>Como funciona a contemplação?</strong><p>Acontece por sorteio ou lance, seguindo regras claras do grupo.</p></div>
-  <div class="faq"><strong>Existe garantia de prazo?</strong><p>Não. Trabalhamos com médias e estratégias, nunca promessas.</p></div>
-  <div class="faq"><strong>Preciso dar entrada?</strong><p>Não é obrigatório, mas valores disponíveis ajudam na estratégia.</p></div>
-  <div class="faq"><strong>Quem administra o crédito?</strong><p>A Alpha Investimentos, com fiscalização do Banco Central.</p></div>
-  <div class="faq"><strong>É seguro?</strong><p>Sim. Processo legal e regulamentado.</p></div>
-</section>
+<details>
+<summary>O que é o lance embutido automático?</summary>
+É todo o valor excedente da carta em relação ao bem desejado.
+Esse valor é usado como lance sem exigir mais dinheiro do bolso.
+</details>
 
-<section id="form">
-  <div class="form">
-    <h2>Solicitar análise personalizada</h2>
-    <form onsubmit="event.preventDefault();window.open('https://wa.me/5561996463677','_blank');">
-      <label>Nome completo</label><input required>
-      <label>WhatsApp</label><input required>
-      <label>O que você deseja adquirir?</label><select><option>Carro</option><option>Imóvel</option></select>
-      <label>Valor aproximado do bem</label><input>
-      <label>Valor disponível para investir (entrada ou lance)</label><input>
-      <label>Quanto pode pagar por mês?</label><input>
-      <label>Como está seu CPF hoje?</label><select><option>Nome limpo</option><option>Restrição leve</option><option>Nome negativado</option></select>
-      <button>Enviar e agendar conversa</button>
-    </form>
-  </div>
-</section>
+<details>
+<summary>Por que usamos uma carta maior que o valor do bem?</summary>
+Para que o excedente vire desconto nas parcelas após a contemplação,
+reduzindo o custo real da compra.
+</details>
 
-<footer>
-  Crédito estruturado via consórcio • Alpha Investimentos<br>Fiscalização e acompanhamento do Banco Central do Brasil
-</footer>
+<details>
+<summary>Em quanto tempo ocorre a contemplação?</summary>
+Com essa estratégia, a média prática fica entre <strong>1 a 6 meses</strong>,
+dependendo do grupo e da administradora.
+</details>
+
+<details>
+<summary>O dinheiro que fica rendendo continua sendo meu?</summary>
+Sim. Ele permanece aplicado, gera rendimento mensal e forma patrimônio
+durante todo o consórcio.
+</details>
+
+<details>
+<summary>Como surge a economia real?</summary>
+Ela vem da soma de:
+<ul>
+<li>Parcelas reduzidas após o lance</li>
+<li>Rendimento do dinheiro investido</li>
+<li>Preservação de capital</li>
+</ul>
+</details>
+
+<details>
+<summary>Isso é financiamento?</summary>
+Não. Consórcio não tem juros. O custo é diluído e previsível.
+</details>
+</div>
+
+<div class="footer">
+Simulação educativa • Valores aproximados • Não substitui proposta oficial
+</div>
+
+</div>
 
 <script>
-const steps=document.querySelectorAll('.step');
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active');});},{threshold:.2});
-steps.forEach(s=>obs.observe(s));
+function parseValor(v){
+  if(!v) return 0;
+  return Number(v.replace(/\./g,'').replace(',','.'));
+}
+function format(v){
+  return v.toLocaleString('pt-BR',{minimumFractionDigits:2});
+}
+function calcular(){
+  let bem = parseValor(document.getElementById('bem').value);
+  let disponivel = parseValor(document.getElementById('disponivel').value);
+  let adesao = parseValor(document.getElementById('adesao').value);
+  let investido = parseValor(document.getElementById('investido').value);
+  let prazo = Number(document.getElementById('prazo').value);
+  let parcelaDesejada = parseValor(document.getElementById('parcela').value);
+  let taxa = Number(document.getElementById('tipo').value);
 
-document.querySelectorAll('.faq').forEach(f=>{f.addEventListener('click',()=>f.classList.toggle('active'));});
+  if(bem<=0 || prazo<=0){
+    alert("Preencha corretamente os campos.");
+    return;
+  }
+
+  // Carta padrão (2x o bem)
+  let carta = bem * 2;
+
+  // Lance automático
+  let lance = carta - bem;
+
+  // Saldo após lance
+  let saldoConsorcio = (carta * (1 + taxa)) - lance;
+
+  let parcelaReal = saldoConsorcio / prazo;
+
+  // Rendimento
+  let rendimentoMensal = investido * 0.008;
+  let rendimentoTotal = rendimentoMensal * prazo;
+
+  let totalParcelas = parcelaDesejada * prazo;
+  let patrimonioFinal = investido + rendimentoTotal;
+
+  let impactoReal = totalParcelas + adesao - rendimentoTotal;
+  let economia = bem - impactoReal;
+  let economiaPerc = (economia / bem) * 100;
+
+  document.getElementById('resultado').innerHTML = `
+<strong>📊 Resultado da Simulação</strong><br><br>
+
+🚗 Valor do bem: <span class="highlight">R$ ${format(bem)}</span><br>
+📄 Carta utilizada: R$ ${format(carta)}<br>
+🔥 Lance embutido automático: R$ ${format(lance)}<br><br>
+
+💳 Parcela após contemplação: R$ ${format(parcelaReal)}<br>
+👛 Parcela sentida no bolso: R$ ${format(parcelaDesejada)}<br><br>
+
+📈 Rendimento mensal: R$ ${format(rendimentoMensal)}<br>
+📊 Rendimento total: R$ ${format(rendimentoTotal)}<br><br>
+
+🏦 Patrimônio final preservado: 
+<span class="highlight">R$ ${format(patrimonioFinal)}</span><br><br>
+
+📉 Total pago em parcelas: R$ ${format(totalParcelas)}<br>
+💰 Adesão inicial: R$ ${format(adesao)}<br>
+🧮 Impacto real da compra: R$ ${format(impactoReal)}<br><br>
+
+✅ Economia real: 
+<span class="highlight">R$ ${format(economia)}</span><br>
+📊 Economia percentual: 
+<span class="highlight">${economiaPerc.toFixed(1)}%</span>
+`;
+}
 </script>
 
 </body>
-</html>
+  </html>
