@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulador de Consórcio Inteligente</title>
+<title>Simulador de Compra Planejada</title>
 
 <style>
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:linear-gradient(180deg,#020617,#0f172a);
-  color:#f8fafc;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(180deg,#05070f,#0b1224);
+  color:#fff;
 }
 .container{
   max-width:480px;
@@ -19,57 +19,72 @@ body{
 }
 h1{
   text-align:center;
-  font-size:22px;
-  margin-bottom:20px;
+  margin-bottom:25px;
 }
 .card{
-  background:#020617;
-  border-radius:14px;
-  padding:16px;
-  margin-bottom:18px;
-  box-shadow:0 0 20px rgba(0,0,0,.4);
+  background:#0f172a;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
 label{
-  font-size:13px;
-  color:#cbd5f5;
+  font-size:14px;
+  opacity:.85;
 }
 input,select{
   width:100%;
-  padding:12px;
-  margin-top:6px;
-  margin-bottom:14px;
-  border-radius:10px;
+  padding:14px;
+  border-radius:12px;
   border:none;
-  font-size:15px;
+  margin:6px 0 16px;
+  font-size:16px;
 }
 button{
   width:100%;
-  padding:15px;
+  padding:16px;
   background:#22c55e;
   border:none;
+  border-radius:14px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.info{
+  background:#064e3b;
+  padding:12px;
   border-radius:12px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+  font-size:14px;
+  margin-bottom:16px;
 }
-button:hover{background:#16a34a;}
-.result{font-size:14px;line-height:1.6;}
-.highlight{color:#22c55e;font-weight:bold;}
-.faq summary{
-  cursor:pointer;
-  font-weight:bold;
-  color:#38bdf8;
+.result{
+  margin-top:25px;
+  background:#020617;
+  border-radius:16px;
+  padding:20px;
+  display:none;
 }
-.footer{
-  text-align:center;
-  font-size:12px;
-  opacity:.6;
-  margin-top:20px;
+.result p{
+  margin:8px 0;
 }
-.tip{
-  font-size:12px;
-  opacity:.7;
+hr{
+  border:0;
+  height:1px;
+  background:#1e293b;
+  margin:12px 0;
+}
+.green{color:#22c55e}
+.red{color:#ef4444}
+
+.faq{
+  margin-top:30px;
+}
+.faq h2{
   margin-bottom:10px;
+}
+.faq p{
+  font-size:14px;
+  opacity:.9;
+  margin-bottom:12px;
 }
 </style>
 </head>
@@ -80,165 +95,112 @@ button:hover{background:#16a34a;}
 <h1>Simulador de Compra Planejada</h1>
 
 <div class="card">
-  <label>Valor do bem desejado</label>
-  <input id="bem" placeholder="Ex: 100.000">
+<label>Tipo de consórcio</label>
+<select id="tipo">
+  <option value="veiculo">Veículo (19%)</option>
+  <option value="imovel">Imóvel (28%)</option>
+</select>
 
-  <label>Valor disponível hoje</label>
-  <input id="disponivel" placeholder="Ex: 70.000">
+<label>Valor do bem desejado</label>
+<input id="bem" placeholder="Ex: 100.000">
 
-  <label>Valor da adesão</label>
-  <input id="adesao" placeholder="Ex: 30.000">
+<label>Valor da adesão</label>
+<input id="adesao" placeholder="Ex: 20.000">
 
-  <label>Valor que ficará rendendo</label>
-  <input id="investido" placeholder="Ex: 40.000">
+<label>Valor que ficará rendendo</label>
+<input id="rendendo" placeholder="Ex: 50.000">
 
-  <label>Tipo de consórcio</label>
-  <select id="tipo">
-    <option value="0.19">Veículo (padrão)</option>
-    <option value="0.28">Imóvel</option>
-  </select>
+<label>Prazo (meses)</label>
+<input id="prazo" placeholder="Ex: 90">
 
-  <label>Prazo (meses)</label>
-  <input id="prazo" placeholder="Ex: 60">
-
-  <label>Parcela desejada</label>
-  <input id="parcela" placeholder="Ex: 1.400">
-
-  <p class="tip">
-  💡 Estratégia recomendada: adesão mínima de <strong>20%</strong> do valor do bem,
-  garantindo pelo menos <strong>50% para lance embutido</strong>.
-  </p>
-
-  <button onclick="calcular()">Simular agora</button>
+<div class="info">
+💡 Estratégia ideal: adesão mínima de <b>20% do valor do bem</b>, garantindo pelo menos <b>50% da carta para lance embutido</b>.
 </div>
 
-<div class="card result" id="resultado"></div>
-
-<div class="card faq">
-<h3>❓ Dúvidas Frequentes</h3>
-
-<details>
-<summary>Por que a adesão ideal é no mínimo 20%?</summary>
-Uma adesão de pelo menos 20% estrutura melhor a carta e garante
-<strong>no mínimo 50% disponíveis para lance embutido</strong>, aumentando
-significativamente as chances de contemplação.
-</details>
-
-<details>
-<summary>O que é o lance embutido automático?</summary>
-É todo o valor excedente da carta em relação ao bem desejado.
-Esse valor é usado como lance sem exigir mais dinheiro do bolso.
-</details>
-
-<details>
-<summary>Por que usamos uma carta maior que o valor do bem?</summary>
-Para que o excedente vire desconto nas parcelas após a contemplação,
-reduzindo o custo real da compra.
-</details>
-
-<details>
-<summary>Em quanto tempo ocorre a contemplação?</summary>
-Com essa estratégia, a média prática fica entre <strong>1 a 6 meses</strong>,
-dependendo do grupo e da administradora.
-</details>
-
-<details>
-<summary>O dinheiro que fica rendendo continua sendo meu?</summary>
-Sim. Ele permanece aplicado, gera rendimento mensal e forma patrimônio
-durante todo o consórcio.
-</details>
-
-<details>
-<summary>Como surge a economia real?</summary>
-Ela vem da soma de:
-<ul>
-<li>Parcelas reduzidas após o lance</li>
-<li>Rendimento do dinheiro investido</li>
-<li>Preservação de capital</li>
-</ul>
-</details>
-
-<details>
-<summary>Isso é financiamento?</summary>
-Não. Consórcio não tem juros. O custo é diluído e previsível.
-</details>
+<button onclick="simular()">Simular agora</button>
 </div>
 
-<div class="footer">
-Simulação educativa • Valores aproximados • Não substitui proposta oficial
+<div class="result" id="resultado"></div>
+
+<div class="faq">
+<h2>📌 Perguntas importantes</h2>
+
+<p><b>A adesão entra no cálculo?</b><br>
+Sim. A adesão é dinheiro que sai do seu bolso e não retorna, por isso ela é considerada no impacto financeiro real.</p>
+
+<p><b>O que é carta estratégica?</b><br>
+É uma carta maior que o valor do bem (normalmente 2x). A diferença vira lance embutido.</p>
+
+<p><b>O que é lance embutido?</b><br>
+É o valor retirado da própria carta após a contemplação, sem usar dinheiro extra.</p>
+
+<p><b>O dinheiro rendendo é gasto?</b><br>
+Não. Ele continua investido, rendendo mensalmente e compondo seu patrimônio final.</p>
+
+<p><b>Esse simulador garante contemplação?</b><br>
+Não. Ele simula uma estratégia baseada em médias reais de mercado.</p>
 </div>
 
 </div>
 
 <script>
-function parseValor(v){
-  if(!v) return 0;
-  return Number(v.replace(/\./g,'').replace(',','.'));
+function money(v){
+  return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})
 }
-function format(v){
-  return v.toLocaleString('pt-BR',{minimumFractionDigits:2});
-}
-function calcular(){
-  let bem = parseValor(document.getElementById('bem').value);
-  let disponivel = parseValor(document.getElementById('disponivel').value);
-  let adesao = parseValor(document.getElementById('adesao').value);
-  let investido = parseValor(document.getElementById('investido').value);
-  let prazo = Number(document.getElementById('prazo').value);
-  let parcelaDesejada = parseValor(document.getElementById('parcela').value);
-  let taxa = Number(document.getElementById('tipo').value);
 
-  if(bem<=0 || prazo<=0){
-    alert("Preencha corretamente os campos.");
-    return;
+function parseBR(v){
+  if(!v) return 0
+  return Number(v.toString().replace(/\./g,'').replace(',','.'))
+}
+
+function simular(){
+  const tipo = document.getElementById('tipo').value
+  const bem = parseBR(document.getElementById('bem').value)
+  const adesao = parseBR(document.getElementById('adesao').value)
+  const rendendo = parseBR(document.getElementById('rendendo').value)
+  const prazo = Number(document.getElementById('prazo').value)
+
+  if(!bem || !prazo){
+    alert("Preencha corretamente os campos")
+    return
   }
 
-  // Carta padrão (2x o bem)
-  let carta = bem * 2;
+  const taxa = tipo==="imovel"?0.28:0.19
+  const carta = bem * 2
+  const lance = carta - bem
 
-  // Lance automático
-  let lance = carta - bem;
+  const custoConsorcio = bem * (1 + taxa)
+  const parcela = custoConsorcio / prazo
 
-  // Saldo após lance
-  let saldoConsorcio = (carta * (1 + taxa)) - lance;
+  const rendimentoMensal = rendendo * 0.008
+  const rendimentoTotal = rendimentoMensal * prazo
+  const patrimonioPreservado = rendendo + rendimentoTotal
 
-  let parcelaReal = saldoConsorcio / prazo;
+  const impactoReal = custoConsorcio + adesao - patrimonioPreservado
+  const economia = bem - impactoReal
+  const economiaPerc = (economia / bem) * 100
 
-  // Rendimento
-  let rendimentoMensal = investido * 0.008;
-  let rendimentoTotal = rendimentoMensal * prazo;
-
-  let totalParcelas = parcelaDesejada * prazo;
-  let patrimonioFinal = investido + rendimentoTotal;
-
-  let impactoReal = totalParcelas + adesao - rendimentoTotal;
-  let economia = bem - impactoReal;
-  let economiaPerc = (economia / bem) * 100;
-
-  document.getElementById('resultado').innerHTML = `
-<strong>📊 Resultado da Simulação</strong><br><br>
-
-🚗 Valor do bem: <span class="highlight">R$ ${format(bem)}</span><br>
-📄 Carta utilizada: R$ ${format(carta)}<br>
-🔥 Lance embutido automático: R$ ${format(lance)}<br><br>
-
-💳 Parcela após contemplação: R$ ${format(parcelaReal)}<br>
-👛 Parcela sentida no bolso: R$ ${format(parcelaDesejada)}<br><br>
-
-📈 Rendimento mensal: R$ ${format(rendimentoMensal)}<br>
-📊 Rendimento total: R$ ${format(rendimentoTotal)}<br><br>
-
-🏦 Patrimônio final preservado: 
-<span class="highlight">R$ ${format(patrimonioFinal)}</span><br><br>
-
-📉 Total pago em parcelas: R$ ${format(totalParcelas)}<br>
-💰 Adesão inicial: R$ ${format(adesao)}<br>
-🧮 Impacto real da compra: R$ ${format(impactoReal)}<br><br>
-
-✅ Economia real: 
-<span class="highlight">R$ ${format(economia)}</span><br>
-📊 Economia percentual: 
-<span class="highlight">${economiaPerc.toFixed(1)}%</span>
-`;
+  const r = document.getElementById("resultado")
+  r.style.display="block"
+  r.innerHTML=`
+    <p>🏷️ Tipo <span class="green">${tipo==="imovel"?"Imóvel":"Veículo"}</span></p>
+    <p>🚗 Valor do bem <span class="green">${money(bem)}</span></p>
+    <hr>
+    <p>📄 Carta estratégica <span>${money(carta)}</span></p>
+    <p>🔥 Lance embutido <span>${money(lance)}</span></p>
+    <hr>
+    <p>💳 Parcela mensal <span>${money(parcela)}</span></p>
+    <p>📊 Custo total no consórcio <span>${money(custoConsorcio)}</span></p>
+    <p>📄 Adesão (custo real) <span class="red">${money(adesao)}</span></p>
+    <hr>
+    <p>📈 Rendimento mensal estimado <span>${money(rendimentoMensal)}</span></p>
+    <p>📈 Rendimento total <span>${money(rendimentoTotal)}</span></p>
+    <p>🏦 Patrimônio preservado <span class="green">${money(patrimonioPreservado)}</span></p>
+    <hr>
+    <p>📉 Impacto financeiro real <span>${money(impactoReal)}</span></p>
+    <p>✅ Economia real <span class="${economia>=0?'green':'red'}">${money(economia)}</span></p>
+    <p>📊 Economia percentual <span class="${economia>=0?'green':'red'}">${economiaPerc.toFixed(1)}%</span></p>
+  `
 }
 </script>
 
