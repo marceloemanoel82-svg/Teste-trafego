@@ -2,128 +2,163 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<title>Simulador de Proposta | Consórcio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marcelo ajuda!</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #0a0a0a;
-  color: #fff;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+:root{
+  --bg:#0f172a;
+  --card:rgba(255,255,255,.08);
+  --border:rgba(255,255,255,.12);
+  --primary:#22c55e;
+  --primary-dark:#16a34a;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --alert:#fef3c7;
 }
 
-.container {
-  width: 100%;
-  max-width: 420px;
-  padding: 16px;
+*{
+  box-sizing:border-box;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
-.card {
-  background: #141414;
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 0 30px rgba(0,0,0,.7);
+body{
+  margin:0;
+  padding:20px;
+  background:linear-gradient(160deg,#020617,#0f172a);
+  color:var(--text);
 }
 
-h1 {
-  text-align: center;
-  color: #00ff99;
-  margin-bottom: 6px;
+.container{
+  max-width:440px;
+  margin:auto;
 }
 
-.sub {
-  text-align: center;
-  font-size: 14px;
-  opacity: .8;
-  margin-bottom: 18px;
+h1{
+  text-align:center;
+  font-size:24px;
+  margin-bottom:6px;
+  letter-spacing:.5px;
 }
 
-.alerta {
-  background: rgba(255,165,0,.12);
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 12px;
-  margin-bottom: 16px;
+.subtitle{
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:22px;
 }
 
-label {
-  font-size: 13px;
-  margin-top: 14px;
-  display: block;
+.card{
+  background:var(--card);
+  backdrop-filter: blur(12px);
+  border:1px solid var(--border);
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
 }
 
-select, input {
-  width: 100%;
-  padding: 12px;
-  margin-top: 6px;
-  border-radius: 10px;
-  border: none;
-  background: #222;
-  color: #fff;
-  font-size: 15px;
+label{
+  display:block;
+  font-size:13px;
+  margin-top:14px;
+  color:var(--muted);
 }
 
-button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 22px;
-  border-radius: 12px;
-  border: none;
-  background: #00ff99;
-  color: #000;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
+input{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.3);
+  color:var(--text);
+  font-size:15px;
+  outline:none;
+  transition:.2s;
 }
 
-button:active {
-  transform: scale(0.97);
+input:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 2px rgba(34,197,94,.25);
 }
 
-.resultado {
-  margin-top: 22px;
-  background: #0e0e0e;
-  padding: 16px;
-  border-radius: 14px;
-  font-size: 14px;
+input[type=range]{
+  padding:0;
 }
 
-.resultado p {
-  margin: 6px 0;
+.range-info{
+  font-size:12px;
+  margin-top:6px;
+  color:var(--muted);
 }
 
-.parcelas {
-  margin-top: 14px;
-  border-top: 1px solid #222;
-  padding-top: 12px;
+button{
+  width:100%;
+  padding:14px;
+  margin-top:22px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#022c22;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.25s;
 }
 
-.parcela {
-  margin: 5px 0;
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(34,197,94,.35);
 }
 
-.destaque {
-  color: #00ff99;
-  font-weight: bold;
+button:active{
+  transform:scale(.98);
 }
 
-.andamento {
-  margin-top: 14px;
-  padding: 12px;
-  background: rgba(0,255,153,.12);
-  border-radius: 12px;
+.resultado{
+  display:none;
+  margin-top:22px;
+  background:var(--card);
+  backdrop-filter: blur(12px);
+  border:1px solid var(--border);
+  padding:20px;
+  border-radius:16px;
+  animation:fadeUp .4s ease;
 }
 
-footer {
-  text-align: center;
-  font-size: 12px;
-  opacity: .6;
-  margin-top: 16px;
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(12px);}
+  to{opacity:1; transform:none;}
+}
+
+.resultado h2{
+  font-size:18px;
+  margin-top:0;
+  margin-bottom:12px;
+}
+
+.linha{
+  display:flex;
+  justify-content:space-between;
+  margin:10px 0;
+  font-size:14px;
+}
+
+.linha strong{
+  font-weight:600;
+}
+
+.alerta{
+  margin-top:14px;
+  padding:12px;
+  font-size:12px;
+  background:var(--alert);
+  border-radius:10px;
+  color:#92400e;
+}
+
+@media(max-width:360px){
+  h1{font-size:22px;}
 }
 </style>
 </head>
@@ -131,109 +166,103 @@ footer {
 <body>
 
 <div class="container">
-  <div class="card">
-    <h1>Marcelo ajuda!</h1>
-    <div class="sub">Aqui tudo fica mais simples</div>
+  <h1>Simulador de Proposta</h1>
+  <div class="subtitle">Planejamento inteligente de consórcio</div>
 
-    <div class="alerta">
-      ⚠️ Informe o valor do ágio <strong>sem ponto ou vírgula</strong><br>
-      Exemplo correto: <strong>15000</strong>
+  <div class="card">
+    <label>Valor da carta (R$)</label>
+    <input type="number" id="carta" placeholder="Ex: 80.000">
+
+    <label>Prazo (meses)</label>
+    <input type="range" id="prazo" min="24" max="180" value="60">
+    <div class="range-info" id="prazoTxt">60 meses</div>
+
+    <label>Taxa administrativa (%)</label>
+    <input type="number" id="taxa" value="20">
+
+    <label>Lance embutido (opcional)</label>
+    <input type="number" id="lance" placeholder="Ex: 20.000">
+
+    <button onclick="simular()">Simular proposta</button>
+  </div>
+
+  <div class="resultado" id="resultado">
+    <h2>Resumo da proposta</h2>
+
+    <div class="linha">
+      <span>Valor da carta</span>
+      <strong id="rCarta"></strong>
     </div>
 
-    <label>Tipo de bem</label>
-    <select id="tipo">
-      <option value="carro">Carro</option>
-      <option value="imovel">Imóvel</option>
-    </select>
+    <div class="linha">
+      <span>Prazo</span>
+      <strong id="rPrazo"></strong>
+    </div>
 
-    <label>Valor do ágio (R$)</label>
-    <input type="number" id="agio" placeholder="Ex: 15000">
+    <div class="linha">
+      <span>Parcela sem lance</span>
+      <strong id="rParcelaSem"></strong>
+    </div>
 
-    <label>O ágio representa</label>
-    <select id="percentual">
-      <option value="0.10">10% do valor total</option>
-      <option value="0.20">20% do valor total</option>
-    </select>
+    <div class="linha">
+      <span>Parcela com lance</span>
+      <strong id="rParcelaCom"></strong>
+    </div>
 
-    <button onclick="calcular()">Calcular simulação</button>
+    <div class="linha">
+      <span>Lance utilizado</span>
+      <strong id="rLance"></strong>
+    </div>
 
-    <div id="resultado" class="resultado" style="display:none;"></div>
-
-    <footer>oferecimento: Cê sabe né disgrama!</footer>
+    <div class="alerta">
+      ⚠️ Consórcio não é financiamento.  
+      Contemplação depende das regras do grupo.
+      Valores apenas ilustrativos.
+    </div>
   </div>
 </div>
 
 <script>
-function formatar(valor) {
-  return valor.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  });
-}
+const prazo = document.getElementById("prazo");
+const prazoTxt = document.getElementById("prazoTxt");
 
-function gerarParcelasQuebradas() {
-  const base = [32, 38, 41, 47, 53, 57, 62, 68, 73, 79, 83, 89];
-  return base.sort(() => 0.5 - Math.random()).slice(0, 5);
-}
+prazo.addEventListener("input",()=>{
+  prazoTxt.innerText = prazo.value + " meses";
+});
 
-function gerarSimulacaoAndamento(saldo) {
-  const parcelas = Math.floor(Math.random() * 30) + 45; // 45 a 75
-  let valor = saldo / parcelas;
-  valor += Math.random() * 87; // quebra o valor
-  return { parcelas, valor };
-}
+function simular(){
+  const carta = Number(document.getElementById("carta").value);
+  const taxaPerc = Number(document.getElementById("taxa").value);
+  const lance = Number(document.getElementById("lance").value) || 0;
+  const meses = Number(prazo.value);
 
-function calcular() {
-  const tipo = document.getElementById("tipo").value;
-  const agio = Number(document.getElementById("agio").value);
-  const percentual = Number(document.getElementById("percentual").value);
-  const resultado = document.getElementById("resultado");
-
-  if (!agio || agio <= 0) {
-    alert("Informe um valor de ágio válido, sem ponto ou vírgula.");
+  if(!carta || carta <= 0){
+    alert("Informe um valor de carta válido.");
     return;
   }
 
-  const valorTotal = agio / percentual;
-  const saldoDevedor = valorTotal - agio;
-  const taxa = tipo === "carro" ? 0.19 : 0.28;
-  const saldoFinanciado = saldoDevedor * (1 + taxa);
+  if(lance >= carta){
+    alert("O lance não pode ser maior ou igual ao valor da carta.");
+    return;
+  }
 
-  const parcelas = gerarParcelasQuebradas();
-  let parcelasHTML = "";
+  const taxaValor = carta * (taxaPerc / 100);
+  const totalPlano = carta + taxaValor;
 
-  parcelas.forEach((p, index) => {
-    let valor = saldoFinanciado / p;
-    valor += Math.random() * 63;
-    parcelasHTML += `
-      <p class="parcela ${index === 2 ? 'destaque' : ''}">
-        ${p}x de ${formatar(valor)}
-      </p>
-    `;
-  });
+  const parcelaSem = totalPlano / meses;
+  const parcelaCom = (totalPlano - lance) / meses;
 
-  const andamento = gerarSimulacaoAndamento(saldoFinanciado);
-
-  resultado.innerHTML = `
-    <p><strong>Valor estimado do bem:</strong> ${formatar(valorTotal)}</p>
-    <p><strong>Valor do ágio:</strong> ${formatar(agio)}</p>
-    <p><strong>Saldo devedor:</strong> ${formatar(saldoDevedor)}</p>
-    <p><strong>Saldo total financiado:</strong> ${formatar(saldoFinanciado)}</p>
-
-    <div class="parcelas">
-      <strong>Parcelas sugeridas:</strong>
-      ${parcelasHTML}
-
-      <div class="andamento">
-        <strong>Simulação em andamento:</strong><br>
-        ${andamento.parcelas}x de ${formatar(andamento.valor)}
-      </div>
-    </div>
-  `;
+  rCarta.innerText = carta.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+  rPrazo.innerText = meses + " meses";
+  rParcelaSem.innerText = parcelaSem.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+  rParcelaCom.innerText = parcelaCom.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+  rLance.innerText = lance > 0
+    ? lance.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})
+    : "Não informado";
 
   resultado.style.display = "block";
 }
 </script>
 
 </body>
-</html>
+        </html>
