@@ -3,206 +3,237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulador de Compra Planejada</title>
+<title>Marcelo ajuda!</title>
 
 <style>
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(180deg,#05070f,#0b1224);
-  color:#fff;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.container{
-  max-width:480px;
-  margin:auto;
-  padding:20px;
-}
-h1{
-  text-align:center;
-  margin-bottom:25px;
-}
-.card{
-  background:#0f172a;
-  border-radius:16px;
-  padding:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.4);
-}
-label{
-  font-size:14px;
-  opacity:.85;
-}
-input,select{
-  width:100%;
-  padding:14px;
-  border-radius:12px;
-  border:none;
-  margin:6px 0 16px;
-  font-size:16px;
-}
-button{
-  width:100%;
-  padding:16px;
-  background:#22c55e;
-  border:none;
-  border-radius:14px;
-  font-size:18px;
-  font-weight:bold;
-  cursor:pointer;
-}
-.info{
-  background:#064e3b;
-  padding:12px;
-  border-radius:12px;
-  font-size:14px;
-  margin-bottom:16px;
-}
-.result{
-  margin-top:25px;
-  background:#020617;
-  border-radius:16px;
-  padding:20px;
-  display:none;
-}
-.result p{
-  margin:8px 0;
-}
-hr{
-  border:0;
-  height:1px;
-  background:#1e293b;
-  margin:12px 0;
-}
-.green{color:#22c55e}
-.red{color:#ef4444}
 
-.faq{
-  margin-top:30px;
+.container {
+  width: 100%;
+  max-width: 420px;
+  padding: 16px;
 }
-.faq h2{
-  margin-bottom:10px;
+
+.card {
+  background: #141414;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 0 30px rgba(0,0,0,.7);
 }
-.faq p{
-  font-size:14px;
-  opacity:.9;
-  margin-bottom:12px;
+
+h1 {
+  text-align: center;
+  color: #00ff99;
+  margin-bottom: 6px;
+}
+
+.sub {
+  text-align: center;
+  font-size: 14px;
+  opacity: .8;
+  margin-bottom: 18px;
+}
+
+.alerta {
+  background: rgba(255,165,0,.12);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+label {
+  font-size: 13px;
+  margin-top: 14px;
+  display: block;
+}
+
+select, input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: none;
+  background: #222;
+  color: #fff;
+  font-size: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 22px;
+  border-radius: 12px;
+  border: none;
+  background: #00ff99;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.resultado {
+  margin-top: 22px;
+  background: #0e0e0e;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+.resultado p {
+  margin: 6px 0;
+}
+
+.parcelas {
+  margin-top: 14px;
+  border-top: 1px solid #222;
+  padding-top: 12px;
+}
+
+.parcela {
+  margin: 5px 0;
+}
+
+.destaque {
+  color: #00ff99;
+  font-weight: bold;
+}
+
+.andamento {
+  margin-top: 14px;
+  padding: 12px;
+  background: rgba(0,255,153,.12);
+  border-radius: 12px;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  opacity: .6;
+  margin-top: 16px;
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
+  <div class="card">
+    <h1>Marcelo ajuda!</h1>
+    <div class="sub">Aqui tudo fica mais simples</div>
 
-<h1>Simulador de Compra Planejada</h1>
+    <div class="alerta">
+      ⚠️ Informe o valor do ágio <strong>sem ponto ou vírgula</strong><br>
+      Exemplo correto: <strong>15000</strong>
+    </div>
 
-<div class="card">
-<label>Tipo de consórcio</label>
-<select id="tipo">
-  <option value="veiculo">Veículo (19%)</option>
-  <option value="imovel">Imóvel (28%)</option>
-</select>
+    <label>Tipo de bem</label>
+    <select id="tipo">
+      <option value="carro">Carro</option>
+      <option value="imovel">Imóvel</option>
+    </select>
 
-<label>Valor do bem desejado</label>
-<input id="bem" placeholder="Ex: 100.000">
+    <label>Valor do ágio (R$)</label>
+    <input type="number" id="agio" placeholder="Ex: 15000">
 
-<label>Valor da adesão</label>
-<input id="adesao" placeholder="Ex: 20.000">
+    <label>O ágio representa</label>
+    <select id="percentual">
+      <option value="0.10">10% do valor total</option>
+      <option value="0.20">20% do valor total</option>
+    </select>
 
-<label>Valor que ficará rendendo</label>
-<input id="rendendo" placeholder="Ex: 50.000">
+    <button onclick="calcular()">Calcular simulação</button>
 
-<label>Prazo (meses)</label>
-<input id="prazo" placeholder="Ex: 90">
+    <div id="resultado" class="resultado" style="display:none;"></div>
 
-<div class="info">
-💡 Estratégia ideal: adesão mínima de <b>20% do valor do bem</b>, garantindo pelo menos <b>50% da carta para lance embutido</b>.
-</div>
-
-<button onclick="simular()">Simular agora</button>
-</div>
-
-<div class="result" id="resultado"></div>
-
-<div class="faq">
-<h2>📌 Perguntas importantes</h2>
-
-<p><b>A adesão entra no cálculo?</b><br>
-Sim. A adesão é dinheiro que sai do seu bolso e não retorna, por isso ela é considerada no impacto financeiro real.</p>
-
-<p><b>O que é carta estratégica?</b><br>
-É uma carta maior que o valor do bem (normalmente 2x). A diferença vira lance embutido.</p>
-
-<p><b>O que é lance embutido?</b><br>
-É o valor retirado da própria carta após a contemplação, sem usar dinheiro extra.</p>
-
-<p><b>O dinheiro rendendo é gasto?</b><br>
-Não. Ele continua investido, rendendo mensalmente e compondo seu patrimônio final.</p>
-
-<p><b>Esse simulador garante contemplação?</b><br>
-Não. Ele simula uma estratégia baseada em médias reais de mercado.</p>
-</div>
-
+    <footer>oferecimento: Cê sabe né disgrama!</footer>
+  </div>
 </div>
 
 <script>
-function money(v){
-  return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})
+function formatar(valor) {
+  return valor.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  });
 }
 
-function parseBR(v){
-  if(!v) return 0
-  return Number(v.toString().replace(/\./g,'').replace(',','.'))
+function gerarParcelasQuebradas() {
+  const base = [32, 38, 41, 47, 53, 57, 62, 68, 73, 79, 83, 89];
+  return base.sort(() => 0.5 - Math.random()).slice(0, 5);
 }
 
-function simular(){
-  const tipo = document.getElementById('tipo').value
-  const bem = parseBR(document.getElementById('bem').value)
-  const adesao = parseBR(document.getElementById('adesao').value)
-  const rendendo = parseBR(document.getElementById('rendendo').value)
-  const prazo = Number(document.getElementById('prazo').value)
+function gerarSimulacaoAndamento(saldo) {
+  const parcelas = Math.floor(Math.random() * 30) + 45; // 45 a 75
+  let valor = saldo / parcelas;
+  valor += Math.random() * 87; // quebra o valor
+  return { parcelas, valor };
+}
 
-  if(!bem || !prazo){
-    alert("Preencha corretamente os campos")
-    return
+function calcular() {
+  const tipo = document.getElementById("tipo").value;
+  const agio = Number(document.getElementById("agio").value);
+  const percentual = Number(document.getElementById("percentual").value);
+  const resultado = document.getElementById("resultado");
+
+  if (!agio || agio <= 0) {
+    alert("Informe um valor de ágio válido, sem ponto ou vírgula.");
+    return;
   }
 
-  const taxa = tipo==="imovel"?0.28:0.19
-  const carta = bem * 2
-  const lance = carta - bem
+  const valorTotal = agio / percentual;
+  const saldoDevedor = valorTotal - agio;
+  const taxa = tipo === "carro" ? 0.19 : 0.28;
+  const saldoFinanciado = saldoDevedor * (1 + taxa);
 
-  const custoConsorcio = bem * (1 + taxa)
-  const parcela = custoConsorcio / prazo
+  const parcelas = gerarParcelasQuebradas();
+  let parcelasHTML = "";
 
-  const rendimentoMensal = rendendo * 0.008
-  const rendimentoTotal = rendimentoMensal * prazo
-  const patrimonioPreservado = rendendo + rendimentoTotal
+  parcelas.forEach((p, index) => {
+    let valor = saldoFinanciado / p;
+    valor += Math.random() * 63;
+    parcelasHTML += `
+      <p class="parcela ${index === 2 ? 'destaque' : ''}">
+        ${p}x de ${formatar(valor)}
+      </p>
+    `;
+  });
 
-  const impactoReal = custoConsorcio + adesao - patrimonioPreservado
-  const economia = bem - impactoReal
-  const economiaPerc = (economia / bem) * 100
+  const andamento = gerarSimulacaoAndamento(saldoFinanciado);
 
-  const r = document.getElementById("resultado")
-  r.style.display="block"
-  r.innerHTML=`
-    <p>🏷️ Tipo <span class="green">${tipo==="imovel"?"Imóvel":"Veículo"}</span></p>
-    <p>🚗 Valor do bem <span class="green">${money(bem)}</span></p>
-    <hr>
-    <p>📄 Carta estratégica <span>${money(carta)}</span></p>
-    <p>🔥 Lance embutido <span>${money(lance)}</span></p>
-    <hr>
-    <p>💳 Parcela mensal <span>${money(parcela)}</span></p>
-    <p>📊 Custo total no consórcio <span>${money(custoConsorcio)}</span></p>
-    <p>📄 Adesão (custo real) <span class="red">${money(adesao)}</span></p>
-    <hr>
-    <p>📈 Rendimento mensal estimado <span>${money(rendimentoMensal)}</span></p>
-    <p>📈 Rendimento total <span>${money(rendimentoTotal)}</span></p>
-    <p>🏦 Patrimônio preservado <span class="green">${money(patrimonioPreservado)}</span></p>
-    <hr>
-    <p>📉 Impacto financeiro real <span>${money(impactoReal)}</span></p>
-    <p>✅ Economia real <span class="${economia>=0?'green':'red'}">${money(economia)}</span></p>
-    <p>📊 Economia percentual <span class="${economia>=0?'green':'red'}">${economiaPerc.toFixed(1)}%</span></p>
-  `
+  resultado.innerHTML = `
+    <p><strong>Valor estimado do bem:</strong> ${formatar(valorTotal)}</p>
+    <p><strong>Valor do ágio:</strong> ${formatar(agio)}</p>
+    <p><strong>Saldo devedor:</strong> ${formatar(saldoDevedor)}</p>
+    <p><strong>Saldo total financiado:</strong> ${formatar(saldoFinanciado)}</p>
+
+    <div class="parcelas">
+      <strong>Parcelas sugeridas:</strong>
+      ${parcelasHTML}
+
+      <div class="andamento">
+        <strong>Simulação em andamento:</strong><br>
+        ${andamento.parcelas}x de ${formatar(andamento.valor)}
+      </div>
+    </div>
+  `;
+
+  resultado.style.display = "block";
 }
 </script>
 
 </body>
-  </html>
+</html>
