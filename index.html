@@ -2,141 +2,125 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Simulador Consórcio x Financiamento</title>
 
 <style>
-:root {
-    --azul: #1f7ae0;
-    --verde: #1bbf7a;
-    --cinza: #6b7280;
-    --bg: #0f172a;
-}
-
+/* RESET BÁSICO COMPATÍVEL */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 20px;
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #1e293b, #020617);
-    color: #111;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #0f172a;
+    padding: 16px;
 }
 
+/* SAFE AREA IPHONE */
 .container {
-    max-width: 430px;
+    max-width: 420px;
     margin: auto;
-    background: #fff;
-    border-radius: 22px;
-    padding: 22px;
-    box-shadow: 0 30px 60px rgba(0,0,0,.45);
-    animation: fadeIn .6s ease;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
 }
 
+/* TEXTOS */
 h1 {
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
     margin-bottom: 6px;
 }
 
 .subtitle {
     text-align: center;
-    font-size: 14px;
-    color: var(--cinza);
-    margin-bottom: 18px;
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 16px;
 }
 
+/* FORM */
 label {
+    display: block;
     font-size: 14px;
     font-weight: 600;
     margin-top: 12px;
-    display: block;
 }
 
 input, select {
     width: 100%;
     padding: 12px;
     margin-top: 6px;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
     font-size: 15px;
+    background: #fff;
 }
 
+/* BOTÃO */
 button {
     width: 100%;
     margin-top: 18px;
     padding: 14px;
     font-size: 16px;
-    border-radius: 14px;
-    border: none;
-    cursor: pointer;
-    background: linear-gradient(90deg, var(--azul), #38bdf8);
-    color: #fff;
     font-weight: 600;
-    transition: transform .2s, box-shadow .2s;
+    color: #fff;
+    background: #2563eb;
+    border: none;
+    border-radius: 12px;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(31,122,224,.4);
-}
-
+/* RESULTADOS */
 .resultado {
-    margin-top: 24px;
-    animation: slideUp .6s ease;
+    margin-top: 20px;
 }
 
 .card {
     background: #f8fafc;
-    border-radius: 18px;
-    padding: 16px;
-    margin-bottom: 14px;
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 12px;
 }
 
 .card h3 {
-    margin: 0 0 10px;
-    font-size: 16px;
+    font-size: 15px;
+    margin-bottom: 8px;
 }
 
 .linha {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    margin: 6px 0;
+    margin-bottom: 6px;
 }
 
 .valor {
     font-weight: 600;
 }
 
-.card.consorcio {
-    border-left: 6px solid var(--verde);
+/* DESTAQUES */
+.consorcio {
+    border-left: 5px solid #16a34a;
 }
 
-.card.financiamento {
-    border-left: 6px solid var(--azul);
+.financiamento {
+    border-left: 5px solid #2563eb;
 }
 
 .badge {
     background: #dcfce7;
     color: #166534;
-    padding: 10px;
-    border-radius: 14px;
+    padding: 12px;
+    border-radius: 12px;
     text-align: center;
+    font-size: 14px;
     font-weight: 700;
-    margin-top: 12px;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@keyframes slideUp {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
 }
 </style>
 </head>
@@ -146,7 +130,7 @@ button:hover {
 <div class="container">
     <h1>Simulador Financeiro</h1>
     <div class="subtitle">
-        Comparação real entre Consórcio e Financiamento
+        Comparação justa entre Consórcio e Financiamento
     </div>
 
     <label>Tipo de Crédito</label>
@@ -161,40 +145,40 @@ button:hover {
     <label>Prazo (meses)</label>
     <input type="number" id="meses" placeholder="Ex: 180">
 
-    <button onclick="simular()">Simular Agora</button>
+    <button onclick="simular()">Simular</button>
 
     <div id="resultado" class="resultado"></div>
 </div>
 
 <script>
 function simular() {
-    let tipo = document.getElementById("tipo").value;
-    let entrada = parseFloat(document.getElementById("entrada").value);
-    let meses = parseInt(document.getElementById("meses").value);
+    var tipo = document.getElementById("tipo").value;
+    var entrada = parseFloat(document.getElementById("entrada").value);
+    var meses = parseInt(document.getElementById("meses").value);
 
     if (!entrada || !meses) {
-        alert("Preencha todos os campos.");
+        alert("Preencha todos os campos corretamente.");
         return;
     }
 
-    let cartaTotal = entrada * 10;
-    let lance = cartaTotal * 0.5;
-    let cartaLivre = cartaTotal * 0.5;
+    var cartaTotal = entrada * 10;
+    var lance = cartaTotal * 0.5;
+    var cartaLivre = cartaTotal * 0.5;
 
-    let taxaConsorcio = tipo === "imobiliario" ? 0.28 : 0.19;
-    let totalConsorcio = cartaLivre * (1 + taxaConsorcio);
-    let parcelaConsorcio = totalConsorcio / meses;
+    var taxaConsorcio = tipo === "imobiliario" ? 0.28 : 0.19;
+    var totalConsorcio = cartaLivre * (1 + taxaConsorcio);
+    var parcelaConsorcio = totalConsorcio / meses;
 
-    let jurosMensal = tipo === "imobiliario" ? 0.009 : 0.018;
-    let parcelaFinanciamento =
+    var jurosMensal = tipo === "imobiliario" ? 0.009 : 0.018;
+    var parcelaFinanciamento =
         cartaLivre *
         (jurosMensal * Math.pow(1 + jurosMensal, meses)) /
         (Math.pow(1 + jurosMensal, meses) - 1);
 
-    let totalFinanciamento = parcelaFinanciamento * meses;
+    var totalFinanciamento = parcelaFinanciamento * meses;
 
-    let economia = totalFinanciamento - totalConsorcio;
-    let economiaPct = (economia / totalFinanciamento) * 100;
+    var economia = totalFinanciamento - totalConsorcio;
+    var economiaPct = (economia / totalFinanciamento) * 100;
 
     document.getElementById("resultado").innerHTML = `
         <div class="card">
