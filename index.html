@@ -4,93 +4,95 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Simulador Consórcio x Financiamento</title>
 
 <style>
-/* RESET BÁSICO COMPATÍVEL */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background: #0f172a;
-    padding: 16px;
+    background: linear-gradient(180deg, #020617, #0f172a);
+    padding: 18px;
 }
 
-/* SAFE AREA IPHONE */
 .container {
     max-width: 420px;
     margin: auto;
     background: #ffffff;
-    border-radius: 18px;
-    padding: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    border-radius: 22px;
+    padding: 20px;
+    box-shadow: 0 20px 45px rgba(0,0,0,.35);
 }
 
-/* TEXTOS */
 h1 {
-    font-size: 20px;
     text-align: center;
+    font-size: 22px;
     margin-bottom: 6px;
 }
 
 .subtitle {
     text-align: center;
-    font-size: 13px;
+    font-size: 14px;
     color: #6b7280;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
-/* FORM */
 label {
-    display: block;
     font-size: 14px;
     font-weight: 600;
-    margin-top: 12px;
+    margin-top: 14px;
+    display: block;
 }
 
 input, select {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     margin-top: 6px;
-    border-radius: 10px;
+    border-radius: 14px;
     border: 1px solid #d1d5db;
-    font-size: 15px;
-    background: #fff;
+    font-size: 16px;
 }
 
-/* BOTÃO */
+.helper {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.helper strong {
+    color: #dc2626;
+}
+
 button {
     width: 100%;
-    margin-top: 18px;
-    padding: 14px;
-    font-size: 16px;
-    font-weight: 600;
+    margin-top: 20px;
+    padding: 15px;
+    font-size: 17px;
+    font-weight: 700;
     color: #fff;
-    background: #2563eb;
+    background: linear-gradient(90deg, #2563eb, #38bdf8);
     border: none;
-    border-radius: 12px;
+    border-radius: 16px;
 }
 
-/* RESULTADOS */
 .resultado {
-    margin-top: 20px;
+    margin-top: 22px;
 }
 
 .card {
     background: #f8fafc;
-    border-radius: 14px;
-    padding: 14px;
-    margin-bottom: 12px;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 14px;
 }
 
 .card h3 {
-    font-size: 15px;
-    margin-bottom: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .linha {
@@ -101,26 +103,23 @@ button {
 }
 
 .valor {
-    font-weight: 600;
+    font-weight: 700;
 }
 
-/* DESTAQUES */
 .consorcio {
-    border-left: 5px solid #16a34a;
+    border-left: 6px solid #16a34a;
 }
 
 .financiamento {
-    border-left: 5px solid #2563eb;
+    border-left: 6px solid #2563eb;
 }
 
 .badge {
-    background: #dcfce7;
-    color: #166534;
-    padding: 12px;
-    border-radius: 12px;
+    padding: 14px;
+    border-radius: 16px;
     text-align: center;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 800;
 }
 </style>
 </head>
@@ -129,9 +128,7 @@ button {
 
 <div class="container">
     <h1>Simulador Financeiro</h1>
-    <div class="subtitle">
-        Comparação justa entre Consórcio e Financiamento
-    </div>
+    <div class="subtitle">Consórcio x Financiamento</div>
 
     <label>Tipo de Crédito</label>
     <select id="tipo">
@@ -141,11 +138,17 @@ button {
 
     <label>Valor da Entrada (R$)</label>
     <input type="number" id="entrada" placeholder="Ex: 50000">
+    <div class="helper">
+        Digite <strong>somente números</strong> (não use ponto nem vírgula)
+    </div>
 
     <label>Prazo (meses)</label>
     <input type="number" id="meses" placeholder="Ex: 180">
+    <div class="helper">
+        Exemplo correto: <strong>180</strong>
+    </div>
 
-    <button onclick="simular()">Simular</button>
+    <button onclick="simular()">Simular Agora</button>
 
     <div id="resultado" class="resultado"></div>
 </div>
@@ -157,10 +160,11 @@ function simular() {
     var meses = parseInt(document.getElementById("meses").value);
 
     if (!entrada || !meses) {
-        alert("Preencha todos os campos corretamente.");
+        alert("Preencha todos os campos usando apenas números.");
         return;
     }
 
+    // Regras do consórcio
     var cartaTotal = entrada * 10;
     var lance = cartaTotal * 0.5;
     var cartaLivre = cartaTotal * 0.5;
@@ -169,7 +173,9 @@ function simular() {
     var totalConsorcio = cartaLivre * (1 + taxaConsorcio);
     var parcelaConsorcio = totalConsorcio / meses;
 
+    // Financiamento (juros mensais padrão Caixa aproximado)
     var jurosMensal = tipo === "imobiliario" ? 0.009 : 0.018;
+
     var parcelaFinanciamento =
         cartaLivre *
         (jurosMensal * Math.pow(1 + jurosMensal, meses)) /
@@ -177,14 +183,37 @@ function simular() {
 
     var totalFinanciamento = parcelaFinanciamento * meses;
 
-    var economia = totalFinanciamento - totalConsorcio;
-    var economiaPct = (economia / totalFinanciamento) * 100;
+    // Comparação correta
+    var diferenca = Math.abs(totalFinanciamento - totalConsorcio);
+    var diferencaPct = (diferenca / Math.max(totalFinanciamento, totalConsorcio)) * 100;
+
+    var badgeTexto = "";
+    var badgeCor = "";
+
+    if (totalConsorcio < totalFinanciamento) {
+        badgeTexto = `
+            Consórcio é mais vantajoso<br>
+            Economia de R$ ${diferenca.toLocaleString('pt-BR')}
+            (${diferencaPct.toFixed(1)}%)
+        `;
+        badgeCor = "linear-gradient(90deg, #dcfce7, #bbf7d0)";
+    } else if (totalFinanciamento < totalConsorcio) {
+        badgeTexto = `
+            Financiamento é mais vantajoso<br>
+            Economia de R$ ${diferenca.toLocaleString('pt-BR')}
+            (${diferencaPct.toFixed(1)}%)
+        `;
+        badgeCor = "linear-gradient(90deg, #dbeafe, #bfdbfe)";
+    } else {
+        badgeTexto = "As duas opções possuem o mesmo custo final.";
+        badgeCor = "linear-gradient(90deg, #e5e7eb, #f3f4f6)";
+    }
 
     document.getElementById("resultado").innerHTML = `
         <div class="card">
             <div class="linha"><span>Carta total</span><span class="valor">R$ ${cartaTotal.toLocaleString('pt-BR')}</span></div>
             <div class="linha"><span>Lance (50%)</span><span class="valor">R$ ${lance.toLocaleString('pt-BR')}</span></div>
-            <div class="linha"><span>Carta livre</span><span class="valor">R$ ${cartaLivre.toLocaleString('pt-BR')}</span></div>
+            <div class="linha"><span>Carta livre (uso)</span><span class="valor">R$ ${cartaLivre.toLocaleString('pt-BR')}</span></div>
         </div>
 
         <div class="card consorcio">
@@ -201,9 +230,8 @@ function simular() {
             <div class="linha"><span>Total pago</span><span class="valor">R$ ${totalFinanciamento.toLocaleString('pt-BR')}</span></div>
         </div>
 
-        <div class="badge">
-            Consórcio é mais vantajoso<br>
-            Economia de R$ ${economia.toLocaleString('pt-BR')} (${economiaPct.toFixed(1)}%)
+        <div class="badge" style="background:${badgeCor}">
+            ${badgeTexto}
         </div>
     `;
 }
